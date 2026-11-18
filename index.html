@@ -2,25 +2,189 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Busted</title>
-  <meta name="description" content="Legal pages and support for the Busted iPhone app.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Busted: go over your limit, get busted</title>
+  <meta name="description" content="Busted is a free iPhone app. Go over your screen-time limit and the app locks until you take a selfie. Your friends see every one.">
+  <meta name="theme-color" content="#F1EDE4">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Busted: go over your limit, get busted">
+  <meta property="og:description" content="Hit your screen-time limit and the app locks until you take a selfie. Your friends see every one. Free on iPhone.">
+  <meta property="og:url" content="https://jodhrai.github.io/busted-legal/">
+  <meta property="og:image" content="https://jodhrai.github.io/busted-legal/img/icon.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="img/icon.png">
+  <link rel="apple-touch-icon" href="img/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Oswald:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
+
+<!-- DOWNLOAD LINK: the TestFlight link appears 3 times on this page. Replace each
+     with the App Store link once the app is released. -->
+
+<header class="wrap top">
+  <a class="brand" href="./"><img src="img/icon.png" alt="" width="34" height="34">Busted</a>
+  <nav>
+    <a class="hide-s" href="#how">How it works</a>
+    <a class="hide-s" href="#faq">Questions</a>
+    <a class="btn small" href="#download">Get the app</a>
+  </nav>
+</header>
+
 <main>
-  <span class="brand">Busted</span>
-  <h1>Go over your limit, get busted.</h1>
-  <p class="meta">An iPhone app</p>
-  <ul class="links">
-    <li><a href="privacy/">Privacy Policy</a></li>
-    <li><a href="terms/">Terms of Use</a></li>
-  </ul>
-  <h2>Support</h2>
-  <p>Questions, problems or account deletion: <a href="mailto:busted.support.help@gmail.com">busted.support.help@gmail.com</a></p>
+  <div class="wrap hero">
+    <div class="hero-copy">
+      <p class="mono">A free iPhone app · 18+</p>
+      <h1>Go over your limit, <span class="over">get busted.</span></h1>
+      <p class="lede">Set a daily limit on the apps you overuse. Go past it and the app locks until you take a selfie. <strong>Your friends see every one.</strong></p>
+      <div class="cta-row">
+        <a class="btn" href="https://testflight.apple.com/join/edPQGeU7">Download for iPhone</a>
+        <span class="mono">Beta on TestFlight · Free</span>
+      </div>
+    </div>
+
+    <div class="post" role="img" aria-label="A Busted post: a mugshot of @sam stamped BUSTED. TikTok, 1 hour 30 minutes, limit 1 hour, 30 minutes over.">
+      <div class="post-head"><b>@sam</b><span class="mono">21:42</span></div>
+      <div class="mugshot" aria-hidden="true">
+        <div class="chart">
+          <span data-h="6'6&quot;"></span><span data-h="6'0&quot;"></span><span data-h="5'6&quot;"></span><span data-h="5'0&quot;"></span><span data-h="4'6&quot;"></span>
+        </div>
+        <svg class="suspect" viewBox="0 0 200 190" aria-hidden="true">
+          <circle cx="100" cy="62" r="46" fill="#161513"/>
+          <path d="M0 190 C0 140 40 116 100 116 C160 116 200 140 200 190 Z" fill="#161513"/>
+        </svg>
+        <div class="stamp">BUSTED</div>
+        <div class="placard">
+          <span class="who">@SAM · 18.11.26 21:42</span>
+          <span class="what">TIKTOK 1H 30M</span>
+          <span class="limit">LIMIT 1H · 30M OVER</span>
+          <span class="unlocked">UNLOCKED FOR 30M</span>
+        </div>
+      </div>
+      <div class="chips" aria-hidden="true">
+        <span>😂 <small>2</small></span><span class="mine">💀 <small>1</small></span><span>👀</span><span>🫠</span><span>🔥</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono">How it works</p>
+        <h2>Three steps to a criminal record</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Set your limits</h3>
+          <p>Pick the apps you spend too long on and give each a daily limit. Or set a schedule that locks apps during work hours.</p>
+        </li>
+        <li>
+          <h3>Hit the limit, get locked out</h3>
+          <p>When your time is up, the app locks. To open it again you take a photo and choose how long to unlock it for, from 15 minutes to 2 hours.</p>
+        </li>
+        <li>
+          <h3>Your friends see it</h3>
+          <p>The photo posts to your friends as a mugshot, with the app, your time and your limit. Skip the photo and a blank SKIPPED tile posts in its place.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <div class="sec-head">
+          <p class="mono">What's inside</p>
+          <h2>Screen time your friends can see</h2>
+          <p>Most screen-time limits are one tap to ignore, and nobody knows you did. Busted makes that tap cost a selfie.</p>
+        </div>
+        <div class="features">
+          <div><h3>A feed that ends</h3><p>Today's and yesterday's posts, in time order. No algorithm and no endless scroll.</p></div>
+          <div><h3>Reactions</h3><p>Friends answer your mugshot with 😂 💀 👀 🫠 or 🔥. No comments.</p></div>
+          <div><h3>Repeat Offenders</h3><p>A weekly leaderboard of who got busted most. First place is Public Enemy No. 1.</p></div>
+          <div><h3>Weekly round-up</h3><p>Every Monday, a collage of your week's mugshots and skips to save or share.</p></div>
+          <div><h3>Schedules</h3><p>Lock apps, whole categories or websites at set times, like 09:00–17:00 on weekdays.</p></div>
+          <div><h3>A moment to rethink</h3><p>A 5-second pause before the camera opens, in case you'd sooner put the phone down.</p></div>
+        </div>
+      </div>
+      <div class="phones">
+        <img src="img/feed.png" alt="The Busted feed, showing a friend's mugshot post for TikTok with reactions underneath" width="598" height="1300" loading="lazy">
+        <img src="img/roundup.png" alt="The weekly round-up: a collage of one week's mugshots and skips, a row for each day" width="598" height="1300" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="download" id="download">
+    <div class="wrap inner">
+      <div>
+        <p class="mono">Get the app</p>
+        <h2>Free, and in beta now</h2>
+        <p class="lede">Busted is in beta, so it installs through TestFlight, Apple's app for trying apps before they reach the App Store. It needs an iPhone on iOS 26.2 or later.</p>
+        <div class="cta-row">
+          <a class="btn on-ink" href="https://testflight.apple.com/join/edPQGeU7">Download for iPhone</a>
+        </div>
+      </div>
+      <ol>
+        <li><span>Install <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> from the App Store. It's free.</span></li>
+        <li><span>Open <a href="https://testflight.apple.com/join/edPQGeU7">the Busted invite</a> on your iPhone and tap Install.</span></li>
+        <li><span>Sign in with Apple, pick a username and add your first limit.</span></li>
+        <li><span>Add your friends by username. It only works if someone's watching.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono">Questions</p>
+        <h2>Before you turn yourself in</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Who can see my photos?</summary>
+          <p>Only friends you've accepted. You add each other by exact username and both have to agree. There are no public profiles and no follower counts.</p>
+        </details>
+        <details>
+          <summary>Does Busted ever take a photo by itself?</summary>
+          <p>No. There's no background camera and no screen recording. You take every photo yourself, and you see it before it posts.</p>
+        </details>
+        <details>
+          <summary>How long do posts stay up?</summary>
+          <p>Friends see a post on the day it's made and the day after. After that only you can see it. You can delete any of your posts at any time, and deleting your account removes all your photos. The <a href="privacy/">privacy policy</a> has the detail.</p>
+        </details>
+        <details>
+          <summary>What if I don't want to take a photo?</summary>
+          <p>Tap Skip on the lock screen. The app unlocks for a short time and a blank SKIPPED tile posts to your friends, so they still know.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>Nothing. There are no payments, subscriptions or ads.</p>
+        </details>
+        <details>
+          <summary>What do I need?</summary>
+          <p>An iPhone on iOS 26.2 or later. You must be 18 or over. Busted uses Apple's Screen Time to lock apps, so it asks for Screen Time access when you set it up.</p>
+        </details>
+        <details>
+          <summary>Is there an Android version?</summary>
+          <p>Not at the moment. Busted is iPhone only.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>Busted · an iPhone app</span>
+    <nav>
+      <a href="privacy/">Privacy Policy</a>
+      <a href="terms/">Terms of Use</a>
+      <span>Support: <a class="addr" href="mailto:busted.support.help@gmail.com">busted.support.help@gmail.com</a></span>
+    </nav>
+  </div>
+</footer>
+
 </body>
 </html>
