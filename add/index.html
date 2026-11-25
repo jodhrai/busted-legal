@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Add a friend on Busted</title>
+  <meta name="description" content="A friend invite for Busted, the iPhone app that locks your apps when you go over your limit until you take a selfie.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F1EDE4">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Add me on Busted">
+  <meta property="og:description" content="Tap to add me as a friend on Busted: go over your screen-time limit and the app locks until you take a selfie your friends see.">
+  <meta property="og:image" content="https://jodhrai.github.io/busted-legal/img/icon.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../img/icon.png">
+  <link rel="apple-touch-icon" href="../img/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../home.css">
+  <style>
+    /* Invite page only. One state shows at a time, chosen by the script below; with no
+       script the page stays on "none". */
+    .invite { display: grid; gap: 22px; justify-items: start; padding-block: 28px 72px; max-width: 640px; }
+    .invite h1 { font-size: clamp(38px, 9vw, 64px); }
+    .invite h1 .who { display: block; overflow-wrap: anywhere; }
+    .invite h1 .who.long { font-size: 0.7em; line-height: 1.25; }
+    .invite .lede { font-size: 19px; line-height: 1.45; color: var(--muted); }
+    .invite .lede strong { color: var(--ink); font-weight: 600; }
+    .invite .actions { display: grid; gap: 12px; width: 100%; max-width: 360px; }
+    .invite .btn { width: 100%; }
+    .btn.outline { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+    .invite .small { font-size: 15px; line-height: 1.5; color: var(--muted); }
+    .invite ol { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+    .invite ol b { font-weight: 600; }
+    [data-state="none"] .has-invite, [data-state="invite"] .no-invite { display: none; }
+    [data-phone="no"] .on-iphone, [data-phone="yes"] .off-iphone { display: none; }
+  </style>
+</head>
+<body data-state="none" data-phone="yes">
+
+<!-- DOWNLOAD LINK: the TestFlight link appears twice on this page (and 3 times on the home
+     page). Replace each with the App Store link once the app is released.
+
+     How this page works: the Busted app shares links like .../add/#sam. The part after "#" is
+     never sent to the server, so this site isn't told who is inviting whom. The script reads
+     it, checks it against the app's username rules (3-20 of a-z, 0-9, "_" and "."), and points
+     "Open in Busted" at busted://add/sam, which the app opens on Friends with the name ready.
+     Keep the rule and the two link shapes in step with FriendInvite and UsernameRules in the
+     app (Packages/BustedKit). -->
+
+<header class="wrap top">
+  <a class="brand" href="../"><img src="../img/icon.png" alt="" width="34" height="34">Busted</a>
+  <nav>
+    <a class="btn small" href="https://testflight.apple.com/join/edPQGeU7">Get the app</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="invite has-invite">
+    <p class="mono">Friend invite</p>
+    <h1>Add <span class="who over" id="who"></span> on Busted</h1>
+    <p class="lede">Busted locks your apps when you go over your limit, until you take a selfie. <strong>Your friends see every one.</strong></p>
+
+    <div class="actions on-iphone">
+      <a class="btn" id="open" href="../">Open in Busted</a>
+      <a class="btn outline" href="https://testflight.apple.com/join/edPQGeU7">Get Busted</a>
+    </div>
+    <p class="small off-iphone"><strong>Busted is an iPhone app.</strong> Open this link on your iPhone to add <span class="who-inline"></span>.</p>
+
+    <ol class="small on-iphone">
+      <li><b>Have Busted?</b> Tap Open in Busted, then tap Add.</li>
+      <li><b>New here?</b> Tap Get Busted and set it up, then open this link again.</li>
+    </ol>
+    <p class="small on-iphone">If Open in Busted does nothing, or Safari says the address is invalid, Busted isn't on this phone yet. You can also add them by hand: in Busted, open Friends and type <b class="who-plain"></b>.</p>
+  </div>
+
+  <div class="invite no-invite">
+    <p class="mono">Friend invite</p>
+    <h1>This invite is missing a name</h1>
+    <p class="lede">The link should end with a username. Ask your friend to send it again, or add them by hand: in Busted, open Friends, type their username and tap Add.</p>
+    <div class="actions">
+      <a class="btn" href="https://testflight.apple.com/join/edPQGeU7">Get Busted</a>
+      <a class="btn outline" href="../">What is Busted?</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Busted · an iPhone app</span>
+    <nav>
+      <a href="../privacy/">Privacy Policy</a>
+      <a href="../terms/">Terms of Use</a>
+      <span>Support: <a class="addr" href="mailto:busted.support.help@gmail.com">busted.support.help@gmail.com</a></span>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // The app's username rules (UsernameRules in BustedKit).
+  var RULE = /^[a-z0-9_.]{3,20}$/;
+
+  function invited() {
+    var raw = location.hash.slice(1);
+    try { raw = decodeURIComponent(raw); } catch (e) { return null; }
+    raw = raw.trim().replace(/^@+/, "").replace(/\/+$/, "").toLowerCase();
+    return RULE.test(raw) ? raw : null;
+  }
+
+  function setText(selector, text) {
+    var found = document.querySelectorAll(selector);
+    for (var i = 0; i < found.length; i++) found[i].textContent = text;
+  }
+
+  function show() {
+    var name = invited();
+    document.body.setAttribute("data-state", name ? "invite" : "none");
+    document.body.setAttribute("data-phone", /iPhone|iPod/.test(navigator.userAgent) ? "yes" : "no");
+    if (!name) {
+      document.title = "Add a friend on Busted";
+      return;
+    }
+    // `name` has passed RULE, so it is safe in the link as it stands; text goes in as text.
+    setText("#who", "@" + name);
+    // Long names would break mid-word at full size on a phone.
+    document.getElementById("who").className = "who over" + (name.length > 13 ? " long" : "");
+    setText(".who-inline", "@" + name);
+    setText(".who-plain", name);
+    document.getElementById("open").setAttribute("href", "busted://add/" + name);
+    document.title = "Add @" + name + " on Busted";
+  }
+
+  window.addEventListener("hashchange", show);
+  show();
+})();
+</script>
+
+</body>
+</html>
